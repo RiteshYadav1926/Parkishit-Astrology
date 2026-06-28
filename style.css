@@ -1,0 +1,1299 @@
+/* ==========================================================
+   01. RESET
+========================================================== */
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:"Inter",sans-serif;
+    color:#F8FAFC;
+    overflow-x:hidden;
+    line-height:1.7;
+    position:relative;
+
+    background:
+        linear-gradient(
+            rgba(11,17,32,.82),
+            rgba(11,17,32,.82)
+        ),
+        url("images/hero-bg.png");
+
+    background-size:130%;
+
+    background-position:center top;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+
+    background-color:#0B1120;
+
+}
+
+/* ==========================================================
+   02. VARIABLES
+========================================================== */
+
+:root{
+
+    --background:#0B1120;
+    --surface:#111827;
+
+    --text:#F8FAFC;
+    --text-light:#9CA3AF;
+
+    --gold:#D4AF37;
+
+    --border:rgba(255,255,255,.08);
+
+    --container:1200px;
+
+    --radius:20px;
+
+    --transition:.35s ease;
+
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+ul{
+    list-style:none;
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+/* ==========================================================
+   03. GLOBAL
+========================================================== */
+
+section{
+
+    width:100%;
+
+    padding:120px 0;
+
+    position:relative;
+
+}
+.container{
+
+    width:100%;
+    max-width:1200px;
+
+    margin:0 auto;
+
+    padding:0 60px;
+
+}
+
+.section-tag{
+
+    display:inline-block;
+
+    color:var(--gold);
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:.8rem;
+
+}
+
+.section-heading{
+
+    text-align:center;
+
+    margin-bottom:70px;
+
+}
+
+.section-heading h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(2.8rem,5vw,4rem);
+
+    margin:18px 0;
+
+}
+
+.section-heading p{
+
+    max-width:650px;
+
+    margin:auto;
+
+    color:var(--text-light);
+
+    line-height:1.9;
+
+}
+
+/* ==========================================================
+   04. HEADER
+========================================================== */
+
+.header{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:80px;
+
+    background:rgba(11,17,32,.92);
+
+    backdrop-filter:blur(14px);
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+    transition:var(--transition);
+
+    z-index:999;
+
+}
+
+.header.scrolled{
+
+    background:rgba(11,17,32,.98);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.28);
+
+}
+
+/* ==========================================================
+   05. NAVBAR
+========================================================== */
+
+.navbar{
+
+    max-width:var(--container);
+
+    height:100%;
+
+    margin:auto;
+
+    padding:0 20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.logo h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:2rem;
+
+    color:var(--gold);
+
+    line-height:1;
+
+}
+
+.logo span{
+
+    display:block;
+
+    margin-top:4px;
+
+    color:var(--text-light);
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:.8rem;
+
+}
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:35px;
+
+}
+
+.nav-links a{
+
+    position:relative;
+
+    transition:var(--transition);
+
+    font-size:.95rem;
+
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+
+    color:var(--gold);
+
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--gold);
+
+    transition:var(--transition);
+
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after{
+
+    width:100%;
+
+}
+
+/* ==========================================================
+   06. BUTTONS
+========================================================== */
+
+.consult-btn,
+.primary-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:16px 34px;
+
+    border-radius:999px;
+
+    background:var(--gold);
+
+    color:#111;
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+}
+
+.consult-btn:hover,
+.primary-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 35px rgba(212,175,55,.28);
+
+}
+
+.secondary-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:16px 34px;
+
+    border-radius:999px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    transition:var(--transition);
+
+}
+
+.secondary-btn:hover{
+
+    border-color:var(--gold);
+
+    background:rgba(255,255,255,.03);
+
+}
+
+/* ==========================================================
+   07. HERO
+========================================================== */
+
+.hero{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:none;
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:160px 0 120px;
+
+}
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+
+    max-width:1200px;
+
+    padding:0 40px;
+
+}
+.hero-tag{
+
+    display:inline-block;
+
+    padding:9px 18px;
+
+    border-radius:999px;
+
+    border:1px solid rgba(212,175,55,.25);
+
+    background:rgba(212,175,55,.04);
+
+    color:var(--gold);
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    font-size:.78rem;
+
+}
+
+.hero h1{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(3.8rem,7vw,5.8rem);
+
+    line-height:1.05;
+
+    letter-spacing:-2px;
+
+    margin:28px 0;
+
+    max-width:720px;
+
+}
+
+.hero h1 span{
+
+    color:var(--gold);
+
+}
+
+.hero p{
+
+    max-width:620px;
+
+    color:rgba(255,255,255,.72);
+
+    font-size:1.1rem;
+
+    line-height:2;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:18px;
+
+    margin:45px 0;
+
+}
+
+/* If you switched to the trust bar */
+
+.hero-trust{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:30px;
+
+    margin-top:30px;
+
+    color:var(--text-light);
+
+}
+
+.hero-trust span{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+/* If you're still using the old cards */
+
+.hero-highlights{
+
+    display:flex;
+
+    gap:22px;
+
+    margin-top:55px;
+
+}
+
+.hero-highlights div{
+
+    flex:1;
+
+    padding:22px;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.02);
+
+    transition:var(--transition);
+
+}
+
+.hero-highlights div:hover{
+
+    transform:translateY(-6px);
+
+    border-color:rgba(212,175,55,.45);
+
+}
+
+.hero-highlights h3{
+
+    color:var(--gold);
+
+    margin-bottom:10px;
+
+}
+
+.hero-highlights span{
+
+    color:var(--text-light);
+
+    font-size:.92rem;
+
+}
+
+.hero-image{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    min-height:600px;
+
+}.astro-wheel{
+
+    position:absolute;
+
+    right:-220px;
+
+    width:720px;
+
+    height:720px;
+
+    opacity:.12;
+
+    animation:rotateWheel 180s linear infinite;
+
+}
+
+.outer-circle{
+
+    position:absolute;
+
+    inset:0;
+
+    border:1px solid rgba(212,175,55,.5);
+
+    border-radius:50%;
+
+}
+
+.inner-circle{
+
+    position:absolute;
+
+    inset:90px;
+
+    border:1px solid rgba(212,175,55,.35);
+
+    border-radius:50%;
+
+}
+
+.line{
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    width:1px;
+
+    height:360px;
+
+    background:rgba(212,175,55,.35);
+
+    transform-origin:top center;
+
+}
+
+.line1{
+
+    transform:
+    translate(-50%,0)
+    rotate(0deg);
+
+}
+
+.line2{
+
+    transform:
+    translate(-50%,0)
+    rotate(45deg);
+
+}
+
+.line3{
+
+    transform:
+    translate(-50%,0)
+    rotate(90deg);
+
+}
+
+.line4{
+
+    transform:
+    translate(-50%,0)
+    rotate(135deg);
+
+}
+
+@keyframes rotateWheel{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}/* ==========================================================
+   08. ABOUT
+========================================================== */
+
+.about{
+
+    width:100%;
+
+    padding:120px 0;
+
+    position:relative;
+
+}
+.about .container{
+
+    display:grid;
+
+    grid-template-columns:420px 1fr;
+
+    gap:100px;
+
+    align-items:center;
+
+}
+
+.about-card{
+
+    background:rgba(255,255,255,.02);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    padding:55px;
+    width: 100%;
+
+    transition:var(--transition);
+
+}
+
+.about-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(212,175,55,.35);
+
+}
+
+.about-label{
+
+    color:var(--gold);
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    font-size:.78rem;
+
+}
+
+.about-card h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:3rem;
+
+    margin-top:18px;
+
+}
+
+.about-card h4{
+
+    margin-top:10px;
+
+    color:var(--text-light);
+
+    font-weight:500;
+
+}
+
+.divider{
+
+    width:70px;
+
+    height:2px;
+
+    background:var(--gold);
+
+    margin:30px 0;
+
+}
+
+.quote{
+
+    color:var(--text-light);
+
+    line-height:2;
+
+    font-style:italic;
+
+}
+
+.about-right h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(2.8rem,5vw,4rem);
+
+    line-height:1.15;
+
+    margin:20px 0 30px;
+
+}
+
+.about-right p{
+
+    color:var(--text-light);
+
+    line-height:2;
+
+    margin-bottom:28px;
+
+}
+
+
+
+/* ==========================================================
+   09. SERVICES
+========================================================== */
+
+.services-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:28px;
+
+
+}
+
+.service-card{
+
+    position:relative;
+
+    padding:38px;
+
+    background:rgba(255,255,255,.02);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    transition:var(--transition);
+
+    overflow:hidden;
+
+}
+
+.service-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:3px;
+
+    background:var(--gold);
+
+    transform:scaleX(0);
+
+    transition:.4s;
+
+}
+
+.service-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:rgba(212,175,55,.45);
+
+}
+
+.service-card:hover::before{
+
+    transform:scaleX(1);
+
+}
+
+.service-card h3{
+
+    font-family:"Cormorant Garamond",serif;
+
+    color:var(--gold);
+
+    font-size:1.6rem;
+
+    margin-bottom:18px;
+
+}
+
+.service-card p{
+
+    color:var(--text-light);
+
+    line-height:1.9;
+
+}
+
+.more-card{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+}
+
+
+
+/* ==========================================================
+   10. WHY CHOOSE
+========================================================== */
+
+.why-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:28px;
+
+}
+
+.why-card{
+
+    position:relative;
+
+    padding:38px;
+
+    background:rgba(255,255,255,.02);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    transition:var(--transition);
+
+    overflow:hidden;
+
+}
+
+.why-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:3px;
+
+    background:var(--gold);
+
+    transform:scaleX(0);
+
+    transition:.4s;
+
+}
+
+.why-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:rgba(212,175,55,.45);
+
+}
+
+.why-card:hover::before{
+
+    transform:scaleX(1);
+
+}
+
+.why-card h3{
+
+    font-family:"Cormorant Garamond",serif;
+
+    color:var(--gold);
+
+    font-size:1.55rem;
+
+    margin-bottom:18px;
+
+}
+
+.why-card p{
+
+    color:var(--text-light);
+
+    line-height:1.9;
+
+}/* ==========================================================
+   11. CONSULTATION PROCESS
+========================================================== */
+
+.process-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:24px;
+
+    margin-top:70px;
+
+}
+
+.process-step{
+
+    position:relative;
+
+    text-align:center;
+
+    padding:40px 28px;
+
+    background:rgba(255,255,255,.02);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    transition:var(--transition);
+
+    overflow:hidden;
+
+}
+
+.process-step::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:3px;
+
+    background:var(--gold);
+
+    transform:scaleX(0);
+
+    transition:.4s;
+
+}
+
+.process-step:hover{
+
+    transform:translateY(-10px);
+
+    border-color:rgba(212,175,55,.45);
+
+}
+
+.process-step:hover::before{
+
+    transform:scaleX(1);
+
+}
+
+.step-number{
+
+    width:62px;
+
+    height:62px;
+
+    margin:0 auto 25px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:var(--gold);
+
+    color:#111;
+
+    font-weight:700;
+
+    font-size:1.2rem;
+
+}
+
+.process-step h3{
+
+    font-family:"Cormorant Garamond",serif;
+
+    color:var(--gold);
+
+    font-size:1.45rem;
+
+    margin-bottom:15px;
+
+}
+
+.process-step p{
+
+    color:var(--text-light);
+
+    line-height:1.8;
+
+    font-size:.95rem;
+
+}
+
+
+
+/* ==========================================================
+   12. CONTACT
+========================================================== */
+
+.contact{
+
+    max-width:950px;
+
+    margin:auto;
+
+    text-align:center;
+
+    padding:70px;
+
+    background:rgba(255,255,255,.02);
+
+    border:1px solid var(--border);
+
+    border-radius:26px;
+
+}
+
+.contact h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:3.2rem;
+
+    margin:20px 0;
+
+}
+
+.contact>p{
+
+    max-width:650px;
+
+    margin:0 auto;
+
+    color:var(--text-light);
+
+    line-height:1.9;
+
+}
+
+.contact-info{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:24px;
+
+    margin:60px 0;
+
+}
+
+.contact-item{
+
+    padding:30px;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.015);
+
+    transition:var(--transition);
+
+}
+
+.contact-item:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(212,175,55,.35);
+
+}
+
+.contact-item h3{
+
+    color:var(--gold);
+
+    margin-bottom:15px;
+
+    font-size:1.25rem;
+
+}
+
+.contact-item a{
+
+    color:var(--text-light);
+
+    transition:var(--transition);
+
+}
+
+.contact-item a:hover{
+
+    color:var(--gold);
+
+}
+
+
+
+/* ==========================================================
+   13. FOOTER
+========================================================== */
+
+.footer{
+
+    margin-top:140px;
+
+    padding:80px 20px 50px;
+
+    text-align:center;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+.footer h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:2.6rem;
+
+    color:var(--gold);
+
+}
+
+.footer>p{
+
+    margin:18px auto 0;
+
+    max-width:520px;
+
+    color:var(--text-light);
+
+    line-height:1.8;
+
+}
+
+.footer-links{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:40px;
+
+    margin:45px 0;
+
+}
+
+.footer-links a{
+
+    position:relative;
+
+    transition:var(--transition);
+
+}
+
+.footer-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-6px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--gold);
+
+    transition:var(--transition);
+
+}
+
+.footer-links a:hover{
+
+    color:var(--gold);
+
+}
+
+.footer-links a:hover::after{
+
+    width:100%;
+
+}
+
+.footer-divider{
+
+    width:180px;
+
+    height:1px;
+
+    margin:40px auto;
+
+    background:rgba(255,255,255,.12);
+
+}
+
+.copyright{
+
+    color:var(--text-light);
+
+    font-size:.9rem;
+
+}
